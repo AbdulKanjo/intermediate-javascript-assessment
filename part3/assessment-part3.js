@@ -11,6 +11,11 @@
 // Find the animal that matches the given id, then call the update function
 // with the animal as the context, and 'Trogdor' as a parameter.
 // return the result of your updateAnimal invocation
+var callBinding = (magicAnimals, updateAnimal, id) => {
+  let animal = magicAnimals.map(animal => animal.id === id);
+  updateAnimal.call(animal);
+  return updateAnimal("Trogdor");
+};
 
 // *************
 // * PROBLEM 2 *
@@ -18,12 +23,19 @@
 
 // For this question, you are asked to make a function called 'applyBinding'.
 // This function will take in 3 parameters:
-// magicAnimals (Array), updateAnimal (Function), id (Number).
+// magicAnimals (Array), magicAnimals (Function), id (Number).
 // Find the animal that matches the given id, then call the function
 // with the context of the animal, and the array ['being majestic', 'eating rainbows'] as a parameter.
 // return the result of your updateAnimal invocation
 
-// CODE HERE...
+var applyBinding = (magicAnimals, updateAnimal, id) => {
+  let animal = magicAnimals.map(animal => {
+    if (animal.id === id) {
+      return animal;
+    }
+  });
+  return updateAnimal.apply(animal[0], ["being majestic", "eating rainbows"]);
+};
 
 // *************
 // * PROBLEM 3 *
@@ -41,7 +53,11 @@
 
 var foo;
 
-// CODE HERE...
+var promiseMe = $q => {
+  return new Promise((re, rej) => {
+    setTimeout(() => re((foo = "bar")), 20);
+  });
+};
 
 // *************
 // * PROBLEM 4 *
@@ -55,4 +71,9 @@ var foo;
 // Make an array of emails (array of strings) from the returned data (You will need to console log or debug to figure this out),
 // and then resolve the array as you complete your promise.
 
-// CODE HERE...
+var emailList = ($q, $http) => {
+  return $http({
+    method: "GET",
+    url: "/api/users"
+  }).then(res => (arr = res.data.map(e => e.email)));
+};
