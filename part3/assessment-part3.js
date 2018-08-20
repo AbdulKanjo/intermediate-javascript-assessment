@@ -12,10 +12,6 @@
 // with the animal as the context, and 'Trogdor' as a parameter.
 // return the result of your updateAnimal invocation
 
-// CODE HERE...
-
-
-
 // *************
 // * PROBLEM 2 *
 // *************
@@ -28,8 +24,6 @@
 // return the result of your updateAnimal invocation
 
 // CODE HERE...
-
-
 
 // *************
 // * PROBLEM 3 *
@@ -48,8 +42,6 @@
 var foo;
 
 // CODE HERE...
-
-
 
 // *************
 // * PROBLEM 4 *
